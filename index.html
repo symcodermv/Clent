@@ -86,16 +86,24 @@ body.public-solo #projects,
 body.public-solo #announcements,
 body.public-solo #news,
 body.public-solo #sittings,
+body.public-solo #official-meetings,
 body.public-solo #about-island,
 body.public-solo footer{display:none!important;}
 body.public-solo.services-only #services{display:block!important;min-height:calc(100vh - 72px);}
 body.public-solo.members-only #members-section{display:block!important;min-height:calc(100vh - 72px);}
+body.public-solo.wdc-only #wdc-section{display:block!important;min-height:calc(100vh - 72px);}
 body.public-solo.staff-only #staff-section{display:block!important;min-height:calc(100vh - 72px);}
 body.public-solo.services-only #members-section,
+body.public-solo.services-only #wdc-section,
 body.public-solo.services-only #staff-section,
+body.public-solo.members-only #wdc-section,
 body.public-solo.members-only #staff-section,
 body.public-solo.members-only #services,
+body.public-solo.wdc-only #members-section,
+body.public-solo.wdc-only #staff-section,
+body.public-solo.wdc-only #services,
 body.public-solo.staff-only #members-section,
+body.public-solo.staff-only #wdc-section,
 body.public-solo.staff-only #services{display:none!important;}
 
 
@@ -265,6 +273,31 @@ body.en-mode .ann-title-txt{font-family:var(--font-en);font-size:clamp(14px,1.5v
 .ann-doc-btn:hover{background:var(--teal);color:#fff;}
 .ann-doc-btn.primary{background:var(--teal);color:#fff;}
 .ann-doc-btn.primary:hover{background:var(--green);}
+.ann-full{position:fixed;inset:0;z-index:780;background:#f6faf9;color:var(--dark);opacity:0;pointer-events:none;transform:translateY(16px);transition:opacity .28s ease,transform .28s ease;overflow-y:auto;font-family:var(--font-dv);}
+.ann-full.open{opacity:1;pointer-events:all;transform:none;}
+.ann-full-hero{position:relative;min-height:210px;background:linear-gradient(135deg,#001B27 0%,#0F7B7D 58%,#155C57 100%);display:flex;align-items:flex-end;padding:42px 30px;overflow:hidden;}
+.ann-full-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.14),transparent 36%,rgba(255,255,255,.1));}
+.ann-full-close{position:fixed;top:18px;right:22px;z-index:2;width:44px;height:44px;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:28px;line-height:1;cursor:pointer;backdrop-filter:blur(10px);box-shadow:0 12px 32px rgba(0,27,39,.16);}
+body:not(.en-mode) .ann-full-close{right:auto;left:22px;}
+.ann-full-head{position:relative;z-index:1;max-width:1180px;width:100%;margin:0 auto;color:#fff;}
+.ann-full-eyebrow{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;font-family:var(--font-en);opacity:.78;margin-bottom:10px;}
+.ann-full-title{font-size:clamp(28px,5vw,54px);font-weight:950;line-height:1.1;font-family:var(--font-dv);}
+body.en-mode .ann-full-title{font-family:var(--font-en);}
+.ann-full-sub{font-size:14px;font-weight:750;font-family:var(--font-en);opacity:.78;margin-top:10px;}
+.ann-full-inner{max-width:1180px;margin:0 auto;padding:30px 28px 72px;}
+.ann-full-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.ann-full-card{background:#fff;border:1px solid rgba(15,123,125,.12);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:190px 1fr;min-height:190px;box-shadow:0 14px 36px rgba(0,27,39,.08);transition:transform .2s,box-shadow .2s,border-color .2s;}
+.ann-full-card:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,27,39,.12);border-color:rgba(15,123,125,.25);}
+.ann-full-img,.ann-full-img-ph{width:100%;height:100%;min-height:190px;object-fit:cover;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--teal),var(--green));color:#fff;}
+.ann-full-body{padding:20px;display:flex;flex-direction:column;gap:10px;}
+.ann-full-date{font-size:12px;font-weight:900;color:var(--teal);font-family:var(--font-en);}
+.ann-full-name{font-size:20px;font-weight:950;line-height:1.35;color:#001B27;font-family:var(--font-dv);}
+body.en-mode .ann-full-name{font-family:var(--font-en);}
+.ann-full-text{font-size:13px;line-height:1.75;color:#5b6d73;font-family:var(--font-dv);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+body.en-mode .ann-full-text{font-family:var(--font-en);}
+.ann-full-actions{margin-top:auto;}
+@media(max-width:900px){.ann-full-grid{grid-template-columns:1fr;}.ann-full-card{grid-template-columns:150px 1fr;}}
+@media(max-width:620px){.ann-full-hero{min-height:170px;padding:56px 20px 28px;}.ann-full-inner{padding:22px 16px 54px;}.ann-full-card{grid-template-columns:1fr;}.ann-full-img,.ann-full-img-ph{height:180px;min-height:180px;}.ann-full-close{top:12px;right:14px;}body:not(.en-mode) .ann-full-close{right:auto;left:14px;}}
 
 /* ===== NEWS CARD ===== */
 .news-card{border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,27,39,.09);display:flex;flex-direction:column;background:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s;}
@@ -409,6 +442,81 @@ body.en-mode .mtg-doc-name{font-family:var(--font-en);}
   .mtg-item-actions{width:100%;}
 }
 
+/* ===== OFFICIAL MEETINGS ===== */
+.official-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.official-card{background:#fff;border:1px solid rgba(15,123,125,.12);border-radius:18px;overflow:hidden;min-height:320px;display:flex;flex-direction:column;box-shadow:0 14px 36px rgba(0,27,39,.08);cursor:pointer;transition:transform .22s,box-shadow .22s,border-color .22s;}
+.official-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,27,39,.14);border-color:rgba(15,123,125,.28);}
+.official-card-media{height:142px;background:linear-gradient(135deg,#0F7B7D,#155C57);display:flex;align-items:center;justify-content:center;color:#fff;position:relative;overflow:hidden;}
+.official-card-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.official-card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,27,39,.54),transparent 62%);pointer-events:none;}
+.official-card-icon{position:relative;z-index:1;width:54px;height:54px;border-radius:14px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.official-card-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.official-card-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:11px;font-weight:900;font-family:var(--font-en);color:#0F7B7D;}
+.official-pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;background:#eaf6f4;color:#155C57;padding:5px 9px;}
+.official-card-title{font-size:20px;font-weight:950;line-height:1.35;color:#001B27;font-family:var(--font-dv);}
+body.en-mode .official-card-title{font-family:var(--font-en);font-size:18px;}
+.official-org{font-size:13px;font-weight:850;color:#5f737a;line-height:1.45;font-family:var(--font-dv);}
+body.en-mode .official-org{font-family:var(--font-en);}
+.official-card-points{margin-top:auto;display:flex;gap:6px;flex-wrap:wrap;}
+.official-point-chip{font-size:11px;font-weight:850;color:#155C57;background:#eefaf5;border:1px solid #d6eee7;border-radius:999px;padding:5px 9px;font-family:var(--font-dv);}
+body.en-mode .official-point-chip{font-family:var(--font-en);}
+.official-card .dv-i,.official-full .dv-i,.official-row .dv-i,.official-detail .dv-i{font-family:var(--font-dv)!important;direction:rtl;letter-spacing:0;text-transform:none;}
+body:not(.en-mode) .official-full-sub,body:not(.en-mode) .official-row-meta,body:not(.en-mode) .official-card-meta,body:not(.en-mode) .official-detail-org,body:not(.en-mode) .official-detail-meta span,body:not(.en-mode) .official-detail-section h3{font-family:var(--font-dv)!important;letter-spacing:0;text-transform:none;}
+.official-full{position:fixed;inset:0;z-index:790;background:#f5faf9;color:#001B27;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .28s ease;overflow:hidden;}
+.official-full.open{opacity:1;pointer-events:all;}
+.official-full-hero{position:relative;min-height:190px;background:linear-gradient(135deg,#001B27,#0F7B7D 62%,#155C57);display:flex;align-items:flex-end;padding:34px 30px;overflow:hidden;flex-shrink:0;}
+.official-full-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.16),transparent 42%);}
+.official-full-head{position:relative;z-index:1;max-width:1180px;width:100%;margin:0 auto;color:#fff;}
+.official-full-title{font-size:clamp(28px,5vw,52px);font-weight:950;line-height:1.1;font-family:var(--font-dv);}
+body.en-mode .official-full-title{font-family:var(--font-en);}
+.official-full-sub{margin-top:8px;font-size:14px;font-weight:800;font-family:var(--font-en);opacity:.76;}
+.official-full-close{position:fixed;top:18px;right:22px;z-index:2;width:44px;height:44px;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:28px;line-height:1;cursor:pointer;backdrop-filter:blur(10px);}
+body:not(.en-mode) .official-full-close{right:auto;left:22px;}
+.official-full-body{flex:1;overflow-y:auto;padding:28px;}
+.official-full-list{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.official-row{background:#fff;border:1px solid rgba(15,123,125,.12);border-radius:14px;display:grid;grid-template-columns:88px 1fr auto;gap:16px;align-items:center;padding:14px;box-shadow:0 8px 26px rgba(0,27,39,.06);cursor:pointer;transition:transform .18s,box-shadow .18s;}
+.official-row:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,27,39,.10);}
+.official-row-img,.official-row-icon{width:88px;height:72px;border-radius:12px;object-fit:cover;background:linear-gradient(135deg,#0F7B7D,#155C57);display:flex;align-items:center;justify-content:center;color:#fff;overflow:hidden;}
+.official-row-main{min-width:0;}
+.official-row-title{font-size:17px;font-weight:950;line-height:1.35;color:#001B27;font-family:var(--font-dv);}
+body.en-mode .official-row-title{font-family:var(--font-en);}
+.official-row-meta{font-size:12px;font-weight:800;color:#667085;font-family:var(--font-en);margin-top:5px;display:flex;gap:10px;flex-wrap:wrap;}
+.official-row-arrow{width:38px;height:38px;border-radius:50%;background:#eaf6f4;color:#0F7B7D;display:flex;align-items:center;justify-content:center;}
+.official-detail{position:fixed;inset:0;z-index:870;background:rgba(0,27,39,.72);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .25s ease;}
+.official-detail.open{opacity:1;pointer-events:all;}
+.official-detail-box{width:min(980px,100%);max-height:92vh;background:#fff;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);box-shadow:0 30px 80px rgba(0,0,0,.3);transform:translateY(14px) scale(.98);transition:transform .25s;}
+.official-detail.open .official-detail-box{transform:none;}
+.official-detail-side{position:relative;min-height:520px;background:linear-gradient(135deg,#001B27,#0F7B7D);color:#fff;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.official-detail-side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);display:none;}
+.official-detail-side.has-img img{display:block;}
+.official-detail-side::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,27,39,.94),rgba(0,27,39,.15));}
+.official-detail-side-inner{position:relative;z-index:1;}
+.official-detail-org{font-size:13px;font-weight:950;text-transform:uppercase;letter-spacing:1.8px;font-family:var(--font-en);opacity:.76;margin-bottom:12px;}
+.official-detail-title{font-size:clamp(24px,3.4vw,38px);font-weight:950;line-height:1.22;font-family:var(--font-dv);}
+body.en-mode .official-detail-title{font-family:var(--font-en);}
+.official-detail-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.official-detail-meta span{border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.18);padding:7px 10px;font-size:12px;font-weight:850;font-family:var(--font-en);}
+.official-detail-close{position:absolute;top:14px;right:14px;z-index:3;width:40px;height:40px;border:none;border-radius:50%;background:rgba(0,0,0,.35);color:#fff;font-size:24px;line-height:1;cursor:pointer;}
+body:not(.en-mode) .official-detail-close{right:auto;left:14px;}
+.official-detail-content{overflow-y:auto;padding:30px;}
+.official-detail-section{margin-bottom:22px;}
+.official-detail-section h3{font-size:13px;font-weight:950;text-transform:uppercase;letter-spacing:1.2px;color:#0F7B7D;font-family:var(--font-en);margin-bottom:10px;}
+.official-detail-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.official-detail-list li{background:#f8fbfa;border:1px solid #e0efeb;border-radius:10px;padding:11px 12px;font-size:14px;font-weight:760;line-height:1.55;color:#334155;font-family:var(--font-dv);}
+body.en-mode .official-detail-list li{font-family:var(--font-en);}
+.official-detail-text{background:#f8fbfa;border:1px solid #e0efeb;border-radius:10px;padding:13px 14px;font-size:14px;font-weight:700;line-height:1.8;color:#334155;font-family:var(--font-dv);}
+body.en-mode .official-detail-text{font-family:var(--font-en);}
+@media(max-width:1024px){.official-grid{grid-template-columns:repeat(2,1fr);}.official-detail-box{grid-template-columns:1fr;overflow-y:auto;}.official-detail-side{min-height:330px;}.official-detail-content{overflow:visible;}}
+@media(max-width:700px){.official-grid{grid-template-columns:1fr;}.official-row{grid-template-columns:64px 1fr;}.official-row-arrow{display:none;}.official-row-img,.official-row-icon{width:64px;height:64px;}.official-full-body{padding:18px 14px;}.official-detail{padding:0;align-items:stretch;}.official-detail-box{border-radius:0;max-height:100vh;}.official-detail-side{min-height:280px;padding:26px 20px;}.official-detail-content{padding:22px 18px;}.official-full-close{top:12px;right:14px;}body:not(.en-mode) .official-full-close{right:auto;left:14px;}}
+body.official-page-mode{overflow:hidden;background:#f5faf9;}
+body.official-page-mode > *:not(#official-full):not(#official-detail):not(script){display:none!important;}
+body.official-page-mode #official-full{position:fixed;inset:0;z-index:1;opacity:1;pointer-events:all;}
+body.official-page-mode #official-detail{z-index:4;}
+body.official-page-mode .official-detail{padding:0;align-items:stretch;}
+body.official-page-mode .official-detail-box{width:100%;height:100vh;max-height:100vh;border-radius:0;box-shadow:none;}
+body.official-page-mode .official-detail-side{min-height:100vh;}
+@media(max-width:700px){body.official-page-mode .official-detail-box{overflow-y:auto;}body.official-page-mode .official-detail-side{min-height:300px;}}
+
 /* ===== FOOTER ===== */
 footer{background:#dde1e4;padding-bottom:52px;position:relative;overflow:hidden;}
 .ft-top{padding:16px 0;}
@@ -500,9 +608,9 @@ body.en-mode .ft-info-title{font-family:var(--font-en);font-size:14px;}
 @media(max-width:768px){.about-layout{grid-template-columns:1fr;}}
 
 #services{display:none;}
-#members-section{display:none;background:#fff;position:relative;overflow:hidden;}
-#members-section::before{content:'';position:absolute;inset:0;background-image:var(--member-watermark);background-repeat:no-repeat;background-position:center 45%;background-size:min(520px,62vw);opacity:.055;pointer-events:none;filter:grayscale(1);}
-#members-section .container{position:relative;z-index:1;}
+#members-section,#wdc-section{display:none;background:#fff;position:relative;overflow:hidden;}
+#members-section::before,#wdc-section::before{content:'';position:absolute;inset:0;background-image:var(--member-watermark);background-repeat:no-repeat;background-position:center 45%;background-size:min(520px,62vw);opacity:.055;pointer-events:none;filter:grayscale(1);}
+#members-section .container,#wdc-section .container{position:relative;z-index:1;}
 .profile-grid::before{content:'';flex:0 0 100%;height:1px;max-width:720px;margin:0 auto -20px;background:linear-gradient(90deg,transparent,rgba(0,27,39,.22),transparent);order:1;}
 .profile-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:62px 34px;margin-top:34px;}
 .staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:62px 34px;margin-top:34px;}
@@ -598,7 +706,11 @@ body.en-mode .profile-assign-heading{font-family:var(--font-en);font-size:14px;}
 .portal-submission-card{border:1px solid #d9e9e6;border-radius:8px;background:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;}
 .portal-submission-card b{font-size:14px;color:#001B27;}
 .portal-submission-card span{font-size:12px;color:#60757d;}
+.portal-submission-main{min-width:0;}
+.portal-submission-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
 .portal-status{border-radius:999px;background:#eaf6f4;color:#155C57;padding:6px 10px;font-size:11px;font-weight:950;white-space:nowrap;}
+.portal-delete-draft{border:1px solid #fecaca;background:#fff5f5;color:#dc2626;border-radius:8px;min-height:30px;padding:6px 10px;font-size:11px;font-weight:950;font-family:var(--font-en);cursor:pointer;}
+.portal-delete-draft:hover{background:#dc2626;color:#fff;border-color:#dc2626;}
 .portal-empty{padding:22px;border:1px dashed #bddbd6;border-radius:8px;background:rgba(255,255,255,.64);font-size:13px;font-weight:800;color:#60757d;text-align:center;}
 .portal-note{margin-top:18px;background:#eaf6f4;color:#155C57;padding:14px 18px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:13px;font-weight:750;}
 .portal-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,18px);background:#001B27;color:#fff;padding:12px 16px;border-radius:8px;font-size:13px;font-weight:850;box-shadow:0 16px 34px rgba(0,27,39,.25);opacity:0;pointer-events:none;transition:all .22s ease;z-index:5;}
@@ -729,6 +841,21 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
   </div>
 </div>
 
+<!-- ANNOUNCEMENTS FULLSCREEN PAGE -->
+<div class="ann-full" id="ann-full">
+  <button class="ann-full-close" onclick="closeAnnouncementDirectory()">&#215;</button>
+  <div class="ann-full-hero">
+    <div class="ann-full-head">
+      <div class="ann-full-eyebrow">Feeali Council</div>
+      <div class="ann-full-title"><span class="dv-i">އިޢުލާންތައް</span><span class="en-i">Announcements</span></div>
+      <div class="ann-full-sub"><span class="dv-i">ހުރިހާ އިޢުލާންތައް</span><span class="en-i">All public announcements in one place</span></div>
+    </div>
+  </div>
+  <div class="ann-full-inner">
+    <div class="ann-full-grid" id="ann-full-list"></div>
+  </div>
+</div>
+
 <!-- NEWS ARTICLE READER - FULL SCREEN NEWS STYLE -->
 <div class="art-overlay" id="news-modal">
   <div class="art-header">
@@ -855,6 +982,36 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
   </div>
 </div>
 
+<!-- OFFICIAL MEETINGS FULLSCREEN PAGE -->
+<div class="official-full" id="official-full">
+  <button class="official-full-close" onclick="closeOfficialMeetings()" aria-label="Close">&times;</button>
+  <div class="official-full-hero">
+    <div class="official-full-head">
+      <div class="official-full-title"><span class="dv-i">ރަސްމީ ބައްދަލުވުން</span><span class="en-i">Official Meetings</span></div>
+      <div class="official-full-sub"><span class="dv-i">މިނިސްޓްރީ، ސަރުކާރީ އޮފީސް އަދި ކުންފުނިތަކާ ބޭއްވޭ ބައްދަލުވުންތައް</span><span class="en-i">Meetings with ministries, government offices, companies, and official appointments.</span></div>
+    </div>
+  </div>
+  <div class="official-full-body">
+    <div class="official-full-list" id="official-full-list"></div>
+  </div>
+</div>
+
+<!-- OFFICIAL MEETING DETAIL MODAL -->
+<div class="official-detail" id="official-detail" onclick="if(event.target===this)closeOfficialDetail()">
+  <div class="official-detail-box">
+    <div class="official-detail-side" id="official-detail-side">
+      <button class="official-detail-close" onclick="closeOfficialDetail()" aria-label="Close">&times;</button>
+      <img id="official-detail-img" src="" alt="">
+      <div class="official-detail-side-inner">
+        <div class="official-detail-org" id="official-detail-org"></div>
+        <div class="official-detail-title" id="official-detail-title"></div>
+        <div class="official-detail-meta" id="official-detail-meta"></div>
+      </div>
+    </div>
+    <div class="official-detail-content" id="official-detail-content"></div>
+  </div>
+</div>
+
 <!-- TOP BAR -->
 <div class="topbar"><div class="tb-inner">
   <a class="tb-phone" href="tel:+9606560013" id="tb-phone">(+960) 6560013</a>
@@ -875,7 +1032,9 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
   <a class="nav-link" href="#announcements"><span class="dv-i">އިޢުލާން</span><span class="en-i">Announcements</span></a>
   <a class="nav-link" href="#news"><span class="dv-i">ޙަބަރު</span><span class="en-i">News</span></a>
   <a class="nav-link" href="#sittings"><span class="dv-i">ކައުންސިލް ޖަލްސާ</span><span class="en-i">Council Sittings</span></a>
+  <a class="nav-link" href="official-meetings.html"><span class="dv-i">ރަސްމީ ބައްދަލުވުން</span><span class="en-i">Official Meetings</span></a>
   <a class="nav-link" href="#members-section"><span class="dv-i">ކައުންސިލް މެންބަރުން</span><span class="en-i">Council Members</span></a>
+  <a class="nav-link" href="#wdc-section"><span class="dv-i">އ.ތ.މ ކޮމެޓީ</span><span class="en-i">WDC Members</span></a>
   <a class="nav-link" href="#staff-section"><span class="dv-i">މުވައްޒަފުން</span><span class="en-i">Staff Profiles</span></a>
   <a class="nav-link" href="#about-island"><span class="dv-i">ފީއަލި ރަށާ ބެހޭ</span><span class="en-i">About Feeali Island</span></a>
   <button class="portal-btn" onclick="openHidhumathPortal()"><svg fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-3-3v6m8 4V7a2 2 0 00-2-2h-3.5L12 3 9.5 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2z"/></svg><span id="portal-nav-title">Hidhumath Portal</span></button>
@@ -1018,7 +1177,7 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
 
 <!-- ANNOUNCEMENTS -->
 <div id="announcements" class="section" style="padding:60px 0;"><div class="container">
-  <div class="sec-hdr"><h2 class="sec-title"><span class="dv-i">އާއްމު އިއުލާނާއި ދެންނެވުން</span><span class="en-i">Announcements</span></h2><a class="more-link" href="#"><span class="dv-i">އިތުރު އިއުލާންތައް</span><span class="en-i">More</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></a></div>
+  <div class="sec-hdr"><h2 class="sec-title"><span class="dv-i">އާއްމު އިއުލާނާއި ދެންނެވުން</span><span class="en-i">Announcements</span></h2><a class="more-link" href="#" onclick="event.preventDefault();openAnnouncementDirectory();"><span class="dv-i">އިތުރު އިއުލާންތައް</span><span class="en-i">More</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></a></div>
   <div class="card-grid" id="ann-grid"><div class="lc"><div class="spin"></div></div></div>
 </div></div>
 
@@ -1034,10 +1193,22 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
   <div class="card-grid" id="sit-grid"><div class="lc"><div class="spin"></div></div></div>
 </div></div>
 
+<!-- OFFICIAL MEETINGS -->
+<div id="official-meetings" class="section" style="padding:60px 0 80px;background:#f8fbfa;"><div class="container">
+  <div class="sec-hdr"><h2 class="sec-title"><span class="dv-i">ރަސްމީ ބައްދަލުވުން</span><span class="en-i">Official Meetings</span></h2><a class="more-link" href="official-meetings.html"><span class="dv-i">ހުރިހާ ބައްދަލުވުން</span><span class="en-i">View All</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></a></div>
+  <div class="official-grid" id="official-grid"><div class="lc"><div class="spin"></div></div></div>
+</div></div>
+
 <!-- COUNCIL MEMBERS -->
 <div class="section" id="members-section" style="padding:70px 0;background:#fff;"><div class="container">
   <div class="sec-hdr"><h2 class="sec-title"><span class="dv-i">ކައުންސިލް މެންބަރުން</span><span class="en-i">Council Members</span></h2></div>
   <div id="members-public-grid" class="profile-grid"></div>
+</div></div>
+
+<!-- WDC MEMBERS -->
+<div class="section" id="wdc-section" style="padding:70px 0;background:#fff;"><div class="container">
+  <div class="sec-hdr"><h2 class="sec-title"><span class="dv-i">އ.ތ.މ ކޮމެޓީ</span><span class="en-i">WDC Members</span></h2></div>
+  <div id="wdc-public-grid" class="profile-grid"></div>
 </div></div>
 
 <!-- STAFF PROFILES -->
@@ -1117,12 +1288,19 @@ import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase
 import {getDatabase,ref,onValue} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 const FB={apiKey:"AIzaSyAHhY81_fI089J0nSYYdVfuhMbxvgJmGTQ",authDomain:"websitecilent.firebaseapp.com",databaseURL:"https://websitecilent-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"websitecilent",storageBucket:"websitecilent.firebasestorage.app",messagingSenderId:"491322767595",appId:"1:491322767595:web:ce36abdddd9112d02f66ae"};
 const app=initializeApp(FB);const db=getDatabase(app);
+const DB_REST=FB.databaseURL;
 const dv=()=>!document.body.classList.contains('en-mode');
 const G=id=>document.getElementById(id);
+const officialParams=new URLSearchParams(window.location.search);
+const officialStandalone=officialParams.get('official')==='1';
+const officialInitialMeeting=officialParams.get('meeting')||'';
+if(officialStandalone)document.body.classList.add('official-page-mode');
 
 function empty(){return '<div style="grid-column:1/-1;padding:60px;text-align:center;color:#ccc;font-size:18px;"><span class=\'dv-i\'>ރެކޯޑެއް ނެތް</span><span class=\'en-i\'>No records found</span></div>';}
 function svgIcon(){return '<svg fill="none" stroke="#aaa" stroke-width="1.5" width="36" height="36" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>';}
 function arrowSvg(){return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px;flex-shrink:0;"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/></svg>';}
+window.closeOfficialMeetings=window.closeOfficialMeetings||function(){};
+window.closeOfficialDetail=window.closeOfficialDetail||function(){};
 
 // SETTINGS
 // Global store for font settings
@@ -1266,6 +1444,68 @@ function savePortalAccounts(items){
 function portalNorm(v){
   return String(v||'').replace(/\s+/g,'').toLowerCase();
 }
+function portalAccountKey(account){
+  var raw=[portalNorm(account&&account.idNo),portalNorm(account&&account.mobile)].filter(Boolean).join('_')||String(Date.now());
+  return encodeURIComponent(raw).replace(/[.#$/\[\]]/g,'_');
+}
+async function portalPasswordHash(pass){
+  if(window.crypto&&window.crypto.subtle&&typeof TextEncoder!=='undefined'){
+    var data=new TextEncoder().encode(pass);
+    var buf=await window.crypto.subtle.digest('SHA-256',data);
+    return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+  }
+  return portalPasswordFallbackHash(pass);
+}
+function portalPasswordFallbackHash(pass){
+  var h=2166136261;
+  var s=String(pass||'');
+  for(var i=0;i<s.length;i++){
+    h^=s.charCodeAt(i);
+    h=Math.imul(h,16777619);
+  }
+  return 'fallback:'+('00000000'+(h>>>0).toString(16)).slice(-8);
+}
+function portalPasswordMatches(account,pass,hash){
+  if(!account)return false;
+  if(account.passwordHash)return String(account.passwordHash)===String(hash)||String(account.passwordHash)===portalPasswordFallbackHash(pass);
+  return String(account.password||'')===String(pass);
+}
+function portalAccountIdentityMatches(account,identity){
+  var id=portalNorm(identity);
+  return portalNorm(account&&account.idNo)===id||portalNorm(account&&account.mobile)===id;
+}
+function portalPublicAccount(account){
+  var clean=Object.assign({},account||{});
+  delete clean.password;
+  return clean;
+}
+async function savePortalAccountFirebase(account){
+  var key=portalAccountKey(account);
+  var r=await fetch(DB_REST+'/portalUsers/'+key+'.json',{
+    method:'PUT',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(portalPublicAccount(Object.assign({},account,{firebaseKey:key,updatedAt:Date.now()})))
+  });
+  if(!r.ok)throw new Error('Firebase account save failed: '+r.status);
+  return r.json();
+}
+async function loadPortalAccountsFirebase(){
+  var r=await fetch(DB_REST+'/portalUsers.json');
+  if(!r.ok)throw new Error('Firebase account lookup failed: '+r.status);
+  var d=await r.json();
+  return Object.keys(d||{}).map(function(k){return Object.assign({firebaseKey:k},d[k]||{});});
+}
+function upsertPortalLocalAccount(account){
+  var accounts=portalStoredAccounts();
+  var idx=accounts.findIndex(function(a){
+    return (portalNorm(a.idNo)&&portalNorm(a.idNo)===portalNorm(account.idNo))
+      ||(portalNorm(a.mobile)&&portalNorm(a.mobile)===portalNorm(account.mobile));
+  });
+  var clean=portalPublicAccount(account);
+  if(idx>=0)accounts[idx]=Object.assign({},accounts[idx],clean);
+  else accounts.push(clean);
+  savePortalAccounts(accounts);
+}
 function portalStoredApplications(){
   try{return JSON.parse(localStorage.getItem('feealiPortalApplications')||'[]');}catch(e){return [];}
 }
@@ -1306,15 +1546,26 @@ function renderPortalMyApps(){
   var list=G('portal-myapps-list');if(!list)return;
   var user=portalStoredUser();
   var userId=user&&user.idNo?String(user.idNo):'';
-  var items=portalStoredApplications().filter(function(item){return !userId||item.userIdNo===userId;});
+  var allItems=portalStoredApplications();
+  var changed=false;
+  allItems.forEach(function(item){
+    if(!item.localId){
+      item.localId='draft_'+(item.createdAt||Date.now())+'_'+Math.random().toString(36).slice(2,8);
+      changed=true;
+    }
+  });
+  if(changed)savePortalApplications(allItems);
+  var items=allItems.filter(function(item){return !userId||item.userIdNo===userId;});
   if(!items.length){
     list.innerHTML='<div class="portal-empty">No forms added yet.</div>';
     return;
   }
   list.innerHTML=items.map(function(item){
+    var isDraft=String(item.status||'Draft').toLowerCase()==='draft';
+    var deleteBtn=isDraft?'<button class="portal-delete-draft" onclick="deletePortalDraft(\''+esc(item.localId||'')+'\')">Delete Draft</button>':'';
     return '<div class="portal-submission-card">'
-      +'<div><b>'+esc(item.title||'Form')+'</b><br><span>'+esc(item.date||'')+'</span></div>'
-      +'<span class="portal-status">'+esc(item.status||'Draft')+'</span>'
+      +'<div class="portal-submission-main"><b>'+esc(item.title||'Form')+'</b><br><span>'+esc(item.date||'')+'</span></div>'
+      +'<div class="portal-submission-actions"><span class="portal-status">'+esc(item.status||'Draft')+'</span>'+deleteBtn+'</div>'
     +'</div>';
   }).join('');
 }
@@ -1382,13 +1633,14 @@ window.showPortalApps=function(){
   if(!portalStoredUser())openHidhumathPortal();
   else{resetPortalSections();var panel=G('portal-myapps-section');if(panel)panel.classList.add('active');var sec=G('portal-myapps-section');if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});}
 };
-window.startPortalApplication=function(key){
+window.startPortalApplication=async function(key){
   var user=portalStoredUser();
   if(!user){openHidhumathPortal();return;}
   var app=(window._portalApps||{})[key];
   if(!app){portalToast('Form is not available.');return;}
   var now=new Date();
   var item={
+    localId:'draft_'+Date.now()+'_'+Math.random().toString(36).slice(2,8),
     appKey:key,
     title:app.titleEn||app.titleDv||'Form',
     status:'Draft',
@@ -1400,22 +1652,52 @@ window.startPortalApplication=function(key){
   items.unshift(item);
   savePortalApplications(items.slice(0,25));
   renderPortalMyApps();
-  fetch('https://websitecilent-default-rtdb.asia-southeast1.firebasedatabase.app/portalSubmissions.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user:user,application:item,createdAt:Date.now()})}).catch(function(){});
+  fetch(DB_REST+'/portalSubmissions.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user:user,application:item,createdAt:Date.now()})})
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(saved){
+      if(saved&&saved.name){
+        var current=portalStoredApplications();
+        var idx=current.findIndex(function(a){return a.localId===item.localId;});
+        if(idx>=0){current[idx].remoteKey=saved.name;savePortalApplications(current);}
+      }
+    }).catch(function(){});
   if(app.formUrl)window.open(app.formUrl,'_blank');
   showPortalApps();
   portalToast('Form added to My Applications.');
 };
-window.signInPortalUser=function(){
+window.deletePortalDraft=async function(localId){
+  if(!localId)return;
+  var items=portalStoredApplications();
+  var found=items.find(function(item){return item.localId===localId;});
+  if(!found)return;
+  if(!confirm('Delete this draft?'))return;
+  savePortalApplications(items.filter(function(item){return item.localId!==localId;}));
+  renderPortalMyApps();
+  portalToast('Draft deleted.');
+  if(found.remoteKey){
+    fetch(DB_REST+'/portalSubmissions/'+encodeURIComponent(found.remoteKey)+'.json',{method:'DELETE'}).catch(function(){});
+  }
+};
+window.signInPortalUser=async function(){
   var err=G('hp-login-error');
   function fail(msg){if(err){err.textContent=msg;err.style.display='block';}}
   if(err)err.style.display='none';
   var identity=(G('hp-login-identity')&&G('hp-login-identity').value.trim())||'';
   var pass=(G('hp-login-pass')&&G('hp-login-pass').value)||'';
   if(!identity||!pass)return fail('Please enter ID card number or mobile number, and password.');
+  var hash=await portalPasswordHash(pass);
   var account=portalStoredAccounts().find(function(a){
-    var matchesIdentity=portalNorm(a.idNo)===portalNorm(identity)||portalNorm(a.mobile)===portalNorm(identity);
-    return matchesIdentity&&String(a.password||'')===pass;
+    return portalAccountIdentityMatches(a,identity)&&portalPasswordMatches(a,pass,hash);
   });
+  if(!account){
+    try{
+      var remoteAccounts=await loadPortalAccountsFirebase();
+      account=remoteAccounts.find(function(a){return portalAccountIdentityMatches(a,identity)&&portalPasswordMatches(a,pass,hash);});
+      if(account)upsertPortalLocalAccount(account);
+    }catch(e){
+      return fail(e.message);
+    }
+  }
   if(!account)return fail('Sign in details do not match an account.');
   var user={name:account.name||'User',email:account.email||'',idNo:account.idNo||identity,mobile:account.mobile||'',createdAt:account.createdAt||Date.now()};
   localStorage.setItem('feealiPortalUser',JSON.stringify(user));
@@ -1424,7 +1706,7 @@ window.signInPortalUser=function(){
   renderPortalState();
   portalToast('Signed in.');
 };
-window.registerPortalUser=function(){
+window.registerPortalUser=async function(){
   var err=G('hp-error');
   function fail(msg){if(err){err.textContent=msg;err.style.display='block';}}
   if(err)err.style.display='none';
@@ -1440,13 +1722,14 @@ window.registerPortalUser=function(){
   if(!data.name||!data.email||!data.idNo||!data.mobile||!pass||!pass2)return fail('Please complete all fields.');
   if(pass.length<6)return fail('Password must be at least 6 characters.');
   if(pass!==pass2)return fail('Passwords do not match.');
-  var accounts=portalStoredAccounts();
-  var existing=accounts.findIndex(function(a){return portalNorm(a.idNo)===portalNorm(data.idNo)&&portalNorm(a.mobile)===portalNorm(data.mobile);});
-  var account=Object.assign({},data,{password:pass});
-  if(existing>=0)accounts[existing]=account;else accounts.push(account);
-  savePortalAccounts(accounts);
+  var account=Object.assign({},data,{passwordHash:await portalPasswordHash(pass)});
+  try{
+    await savePortalAccountFirebase(account);
+  }catch(e){
+    return fail(e.message);
+  }
+  upsertPortalLocalAccount(account);
   localStorage.setItem('feealiPortalUser',JSON.stringify(data));
-  fetch('https://websitecilent-default-rtdb.asia-southeast1.firebasedatabase.app/portalUsers.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});
   ['hp-name','hp-email','hp-idno','hp-mobile','hp-pass','hp-pass2'].forEach(function(id){var el=G(id);if(el)el.value='';});
   resetPortalSections();
   renderPortalState();
@@ -1460,35 +1743,55 @@ function defaultSidebarItems(){
     {labelEn:'Announcements',labelDv:'އިޢުލާން',href:'#announcements'},
     {labelEn:'News',labelDv:'ޚަބަރު',href:'#news'},
     {labelEn:'Council Sittings',labelDv:'ކައުންސިލް ބައްދަލުވުންތައް',href:'#sittings'},
+    {labelEn:'Official Meetings',labelDv:'ރަސްމީ ބައްދަލުވުން',href:'official-meetings.html'},
     {labelEn:'Council Members',labelDv:'ކައުންސިލް މެންބަރުން',href:'#members-section'},
+    {labelEn:'WDC Members',labelDv:'އ.ތ.މ ކޮމެޓީ',href:'#wdc-section'},
     {labelEn:'Staff Profiles',labelDv:'މުވައްޒަފުން',href:'#staff-section'},
     {labelEn:'About Feeali Island',labelDv:'ފީއަލި ރަށާ ބެހޭ',href:'#about-island'}
   ];
 }
 function sidebarRowsWithDefaults(items){
-  const base=(items&&items.length?items.slice():[]);
+  const normalize=function(it){
+    const row=Object.assign({},it||{});
+    if(row.href==='#official-meetings')row.href='official-meetings.html';
+    if(Array.isArray(row.children))row.children=row.children.map(normalize);
+    return row;
+  };
+  const base=(items&&items.length?items.map(normalize):[]);
   const essentials=defaultSidebarItems();
   const hasHref=function(href){return base.some(function(it){return (it.href||'')===href;});};
   essentials.forEach(function(it){if(!hasHref(it.href))base.push(it);});
   return base;
 }
 function setPublicSolo(hash){
-  document.body.classList.remove('services-only','members-only','staff-only');
+  document.body.classList.remove('services-only','members-only','wdc-only','staff-only');
+  window.closeOfficialMeetings();
+  window.closeOfficialDetail();
   if(hash==='#services'){
     document.body.classList.add('public-solo','services-only');
     closeServiceDirectory();
+    closeAnnouncementDirectory();
     setTimeout(function(){window.scrollTo({top:0,behavior:'smooth'});},20);
     return true;
   }
   if(hash==='#members-section'){
     document.body.classList.add('public-solo','members-only');
     closeServiceDirectory();
+    closeAnnouncementDirectory();
+    setTimeout(function(){window.scrollTo({top:0,behavior:'smooth'});},20);
+    return true;
+  }
+  if(hash==='#wdc-section'){
+    document.body.classList.add('public-solo','wdc-only');
+    closeServiceDirectory();
+    closeAnnouncementDirectory();
     setTimeout(function(){window.scrollTo({top:0,behavior:'smooth'});},20);
     return true;
   }
   if(hash==='#staff-section'){
     document.body.classList.add('public-solo','staff-only');
     closeServiceDirectory();
+    closeAnnouncementDirectory();
     setTimeout(function(){window.scrollTo({top:0,behavior:'smooth'});},20);
     return true;
   }
@@ -1499,6 +1802,9 @@ function navigatePublicHash(hash,delay){
   if(!hash)return;
   if(setPublicSolo(hash))return;
   closeServiceDirectory();
+  closeAnnouncementDirectory();
+  window.closeOfficialMeetings();
+  window.closeOfficialDetail();
   setTimeout(function(){
     var target=document.querySelector(hash);
     if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
@@ -1506,9 +1812,10 @@ function navigatePublicHash(hash,delay){
 }
 function handleDrawerHref(href){
   if(!href){closeMobDrawer();return;}
-  if(href==='#services'){closeMobDrawer();navigatePublicHash(href,260);return;}
-  if(href.charAt(0)==='#'){drawerNav(href);return;}
-  closeMobDrawer();window.open(href,'_blank');
+  if(href.charAt(0)==='#'){closeMobDrawer();navigatePublicHash(href,260);return;}
+  closeMobDrawer();
+  if(/^[^:?#]+\.html(?:[?#].*)?$/i.test(href)){window.location.href=href;return;}
+  window.open(href,'_blank');
 }
 function buildManagedDrawer(items){
   const el=document.getElementById('drw-admin-sidebar');if(!el)return;
@@ -1728,17 +2035,58 @@ onValue(ref(db,'projects'),s=>{
 });
 
 // ANNOUNCEMENTS
+function announcementImagePlaceholder(cls){
+  return '<div class="'+cls+'"><svg fill="none" stroke="rgba(255,255,255,.72)" stroke-width="1.5" width="36" height="36" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg></div>';
+}
+function announcementDocActions(a,wrapClass){
+  var url=a&&a.attach?String(a.attach):'';
+  if(!url)return '';
+  var safeUrl=url.replace(/'/g,'&#39;');
+  var docName=String((a.titleEn||a.titleDv||'announcement')+'.pdf').replace(/'/g,'&#39;');
+  return '<div class="'+(wrapClass||'ann-doc-actions')+'"><a class="ann-doc-btn primary" href="'+attr(url)+'" target="_blank" rel="noopener">'+serviceFileGlyph()+'<span class="dv-i">ބަލާ</span><span class="en-i">View</span></a><button class="ann-doc-btn" type="button" onclick="downloadServiceDoc(\''+safeUrl+'\',\''+docName+'\')">'+serviceDownloadGlyph()+'<span class="dv-i">ޑައުންލޯޑް</span><span class="en-i">Download</span></button></div>';
+}
+function renderAnnouncementCard(a){
+  var imgSrc=a.imgUrl||a.imgData||'';
+  var imgHtml=imgSrc?'<img class="ann-card-img" src="'+attr(imgSrc)+'" alt="">':announcementImagePlaceholder('ann-card-img-ph');
+  return '<div class="ann-card">'+imgHtml+'<div class="ann-card-body"><div><div class="ann-date-txt">'+esc(a.date||'')+'</div><div class="ann-title-txt"><span class="dv-i">'+esc(a.titleDv||a.titleEn||'')+'</span><span class="en-i">'+esc(a.titleEn||a.titleDv||'')+'</span></div></div>'+announcementDocActions(a,'ann-doc-actions')+'</div></div>';
+}
+function renderAnnouncementDirectory(){
+  var list=G('ann-full-list');if(!list)return;
+  var data=window._allAnnouncements||{};
+  var items=Object.values(data).sort(function(a,b){return new Date(b.date||0)-new Date(a.date||0);});
+  if(!items.length){list.innerHTML='<div class="portal-empty" style="grid-column:1/-1;">No announcements found.</div>';return;}
+  list.innerHTML=items.map(function(a){
+    var imgSrc=a.imgUrl||a.imgData||'';
+    var imgHtml=imgSrc?'<img class="ann-full-img" src="'+attr(imgSrc)+'" alt="">':announcementImagePlaceholder('ann-full-img-ph');
+    var body=a.bodyEn||a.bodyDv||'';
+    return '<article class="ann-full-card">'
+      +imgHtml
+      +'<div class="ann-full-body">'
+        +'<div class="ann-full-date">'+esc(a.date||'')+'</div>'
+        +'<h3 class="ann-full-name"><span class="dv-i">'+esc(a.titleDv||a.titleEn||'')+'</span><span class="en-i">'+esc(a.titleEn||a.titleDv||'')+'</span></h3>'
+        +(body?'<div class="ann-full-text"><span class="dv-i">'+esc(a.bodyDv||a.bodyEn||'')+'</span><span class="en-i">'+esc(a.bodyEn||a.bodyDv||'')+'</span></div>':'')
+        +'<div class="ann-full-actions">'+announcementDocActions(a,'ann-doc-actions')+'</div>'
+      +'</div>'
+    +'</article>';
+  }).join('');
+}
+window.openAnnouncementDirectory=function(){
+  renderAnnouncementDirectory();
+  var ov=G('ann-full');
+  if(ov){ov.classList.add('open');document.body.style.overflow='hidden';}
+};
+window.closeAnnouncementDirectory=function(){
+  var ov=G('ann-full');
+  if(ov)ov.classList.remove('open');
+  document.body.style.overflow='';
+};
 onValue(ref(db,'announcements'),s=>{
   const g=G('ann-grid'),d=s.val();if(!g)return;
+  window._allAnnouncements=d||{};
+  renderAnnouncementDirectory();
   if(!d){g.innerHTML=empty();return;}
   const items=Object.values(d).sort(function(a,b){return new Date(b.date||0)-new Date(a.date||0);}).slice(0,3);
-  g.innerHTML=items.map(function(a){
-    var imgHtml=(a.imgUrl||a.imgData)?'<img class="ann-card-img" src="'+(a.imgUrl||a.imgData)+'" alt="">':'<div class="ann-card-img-ph"><svg fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5" width="36" height="36" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg></div>';
-    var safeUrl=String(a.attach||'').replace(/'/g,'&#39;');
-    var docName=String((a.titleEn||a.titleDv||'announcement')+'.pdf').replace(/'/g,'&#39;');
-    var docActions=a.attach?'<div class="ann-doc-actions"><a class="ann-doc-btn primary" href="'+safeUrl+'" target="_blank" rel="noopener">'+serviceFileGlyph()+'<span class="dv-i">ބަލާ</span><span class="en-i">View</span></a><button class="ann-doc-btn" type="button" onclick="downloadServiceDoc(\''+safeUrl+'\',\''+docName+'\')">'+serviceDownloadGlyph()+'<span class="dv-i">ޑައުންލޯޑް</span><span class="en-i">Download</span></button></div>':'';
-    return '<div class="ann-card">'+imgHtml+'<div class="ann-card-body"><div><div class="ann-date-txt">'+(a.date||'')+'</div><div class="ann-title-txt"><span class="dv-i">'+(a.titleDv||a.titleEn||'')+'</span><span class="en-i">'+(a.titleEn||a.titleDv||'')+'</span></div></div>'+docActions+'</div></div>';
-  }).join('');
+  g.innerHTML=items.map(renderAnnouncementCard).join('');
 });
 
 // NEWS
@@ -1789,11 +2137,21 @@ onValue(ref(db,'members'),s=>{
   _allMembers=s.val()||{};
   renderMembersPublic(_allMembers);
 });
+let _allWdcMembers={};
+onValue(ref(db,'wdcMembers'),s=>{
+  _allWdcMembers=s.val()||{};
+  renderWdcMembersPublic(_allWdcMembers);
+});
 function renderMembersPublic(d){
-  const grid=document.getElementById('members-public-grid');if(!grid)return;
-  if(!d||!Object.keys(d).length){grid.style.display='none';const sec=document.getElementById('members-section');if(sec)sec.style.display='none';return;}
-  const sec=document.getElementById('members-section');if(sec)sec.style.display='block';
-  grid.style.display='grid';
+  renderProfilePublic(d,'members-public-grid');
+}
+function renderWdcMembersPublic(d){
+  renderProfilePublic(d,'wdc-public-grid');
+}
+function renderProfilePublic(d,gridId){
+  const grid=document.getElementById(gridId);if(!grid)return;
+  if(!d||!Object.keys(d).length){grid.innerHTML='<div class="portal-empty" style="width:100%;">No members added yet.</div>';return;}
+  grid.style.display='';
   grid.className='profile-grid';
   const roleOrder={president:0,vicepresident:1,member:2};
   const roleLabelDv={president:'ރައީސް',vicepresident:'ނާއިބު ރައީސް',member:'މެންބަރު'};
@@ -1860,10 +2218,8 @@ function profileAssignments(m){
 }
 function renderStaffPublic(d){
   const grid=document.getElementById('staff-public-grid');if(!grid)return;
-  const sec=document.getElementById('staff-section');
   const items=Object.values(d||{}).sort(function(a,b){return (a.order||99)-(b.order||99);});
-  if(!items.length){grid.innerHTML='';if(sec)sec.style.display='none';return;}
-  if(sec)sec.style.display='block';
+  if(!items.length){grid.innerHTML='<div class="portal-empty" style="grid-column:1/-1;">No staff profiles added yet.</div>';return;}
   grid.innerHTML=items.map(function(st,i){
     var photo=st.photo||st.imgData||st.imgUrl||'';
     var photoHtml=photo?'<img src="'+photo+'" alt="">':'<svg fill="none" stroke="currentColor" stroke-width="1.5" width="42" height="42" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>';
@@ -1879,6 +2235,211 @@ function renderStaffPublic(d){
     +'</div>';
   }).join('');
 }
+
+// OFFICIAL MEETINGS
+window._officialMeetings={};
+function officialIcon(){
+  return '<svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 10h.01M12 10h.01M15 10h.01"/></svg>';
+}
+function officialLines(v){
+  if(Array.isArray(v))return v.map(function(x){return String(x||'').trim();}).filter(Boolean);
+  return String(v||'').split(/\n+/).map(function(x){return x.trim();}).filter(Boolean);
+}
+function officialEntries(){
+  return Object.entries(window._officialMeetings||{}).sort(function(a,b){
+    return new Date(b[1].date||0)-new Date(a[1].date||0);
+  });
+}
+function officialDate(v){
+  if(!v)return '';
+  var d=new Date(v);
+  if(isNaN(d.getTime()))return v;
+  return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+}
+function officialTypeSpans(type){
+  var map={
+    ministry:['މިނިސްޓްރީ','Ministry'],
+    government:['ސަރުކާރީ އޮފީސް','Government Office'],
+    company:['ކުންފުނި','Company'],
+    appointment:['އެޕޮއިންޓްމަންޓް','Appointment'],
+    other:['އެހެން','Other']
+  };
+  var p=map[type]||map.other;
+  return '<span class="dv-i">'+esc(p[0])+'</span><span class="en-i">'+esc(p[1])+'</span>';
+}
+function officialTypePair(type){
+  var map={
+    ministry:['މިނިސްޓްރީ','Ministry'],
+    government:['ސަރުކާރީ އޮފީސް','Government Office'],
+    company:['ކުންފުނި','Company'],
+    appointment:['އެޕޮއިންޓްމަންޓް','Appointment'],
+    other:['އެހެން','Other']
+  };
+  var p=map[type]||map.other;
+  return {dv:p[0],en:p[1]};
+}
+function officialTitleHtml(m){
+  return '<span class="dv-i">'+esc(m.titleDv||m.titleEn||'ރަސްމީ ބައްދަލުވުން')+'</span><span class="en-i">'+esc(m.titleEn||m.titleDv||'Official Meeting')+'</span>';
+}
+function officialOrgHtml(m){
+  var dvName=m.orgDv||m.ministryDv||m.organizationDv||m.orgEn||m.ministryEn||m.organizationEn||'';
+  var enName=m.orgEn||m.ministryEn||m.organizationEn||m.orgDv||m.ministryDv||m.organizationDv||'';
+  return '<span class="dv-i">'+esc(dvName)+'</span><span class="en-i">'+esc(enName)+'</span>';
+}
+function officialPairText(m,dvKey,enKey){
+  return {
+    dv:m[dvKey]||m[enKey]||'',
+    en:m[enKey]||m[dvKey]||''
+  };
+}
+function officialPairLines(m,dvKey,enKey){
+  var dvLines=officialLines(m[dvKey]);
+  var enLines=officialLines(m[enKey]);
+  if(!dvLines.length)dvLines=enLines;
+  if(!enLines.length)enLines=dvLines;
+  return {dv:dvLines,en:enLines};
+}
+function officialPointChips(m,limit){
+  var points=officialPairLines(m,'keyPointsDv','keyPointsEn');
+  var count=Math.min(limit||2,Math.max(points.dv.length,points.en.length));
+  var html='';
+  for(var i=0;i<count;i++){
+    html+='<span class="official-point-chip"><span class="dv-i">'+esc(points.dv[i]||points.en[i]||'')+'</span><span class="en-i">'+esc(points.en[i]||points.dv[i]||'')+'</span></span>';
+  }
+  return html;
+}
+function officialImage(m){
+  return m.imageUrl||m.imgUrl||m.imageData||m.photo||'';
+}
+function renderOfficialCard(entry){
+  var k=entry[0],m=entry[1],img=officialImage(m);
+  var media=img?'<img src="'+attr(img)+'" alt="" loading="lazy">':'<div class="official-card-icon">'+officialIcon()+'</div>';
+  return '<div class="official-card" data-key="'+attr(k)+'" onclick="window.location.href=\'official-meetings.html?meeting=\'+encodeURIComponent(this.dataset.key)">'
+    +'<div class="official-card-media">'+media+'</div>'
+    +'<div class="official-card-body">'
+      +'<div class="official-card-meta"><span class="official-pill">'+esc(officialDate(m.date)||'')+'</span><span class="official-pill">'+officialTypeSpans(m.type||'other')+'</span></div>'
+      +'<div class="official-card-title">'+officialTitleHtml(m)+'</div>'
+      +(officialOrgHtml(m)?'<div class="official-org">'+officialOrgHtml(m)+'</div>':'')
+      +'<div class="official-card-points">'+officialPointChips(m,2)+'</div>'
+    +'</div>'
+  +'</div>';
+}
+function renderOfficialRow(entry){
+  var k=entry[0],m=entry[1],img=officialImage(m);
+  var media=img?'<img class="official-row-img" src="'+attr(img)+'" alt="" loading="lazy">':'<div class="official-row-icon">'+officialIcon()+'</div>';
+  return '<div class="official-row" data-key="'+attr(k)+'" onclick="openOfficialDetail(this.dataset.key)">'
+    +media
+    +'<div class="official-row-main">'
+      +'<div class="official-row-title">'+officialTitleHtml(m)+'</div>'
+      +'<div class="official-row-meta"><span>'+esc(officialDate(m.date)||'')+'</span><span>'+officialTypeSpans(m.type||'other')+'</span><span>'+officialOrgHtml(m)+'</span></div>'
+    +'</div>'
+    +'<div class="official-row-arrow"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></div>'
+  +'</div>';
+}
+function renderOfficialMeetingsPublic(){
+  var grid=G('official-grid');
+  var list=G('official-full-list');
+  var entries=officialEntries();
+  if(grid){
+    grid.innerHTML=entries.length?entries.slice(0,3).map(renderOfficialCard).join(''):'<div class="portal-empty" style="grid-column:1/-1;">No official meetings added yet.</div>';
+  }
+  if(list){
+    list.innerHTML=entries.length?entries.map(renderOfficialRow).join(''):'<div class="portal-empty">No official meetings added yet.</div>';
+  }
+}
+window.openOfficialMeetings=function(){
+  renderOfficialMeetingsPublic();
+  var el=G('official-full');
+  if(el)el.classList.add('open');
+  document.body.style.overflow='hidden';
+};
+window.closeOfficialMeetings=function(){
+  if(officialStandalone){
+    try{window.top.location.href='index.html';}
+    catch(e){window.location.href='index.html';}
+    return;
+  }
+  var el=G('official-full');
+  if(el)el.classList.remove('open');
+  var detail=G('official-detail');
+  if(!detail||!detail.classList.contains('open'))document.body.style.overflow='';
+};
+function officialInfoLine(labelDv,labelEn,dvVal,enVal){
+  if(!dvVal&&!enVal)return '';
+  return '<li><span class="dv-i"><b>'+esc(labelDv)+':</b> '+esc(dvVal||enVal)+'</span><span class="en-i"><b>'+esc(labelEn)+':</b> '+esc(enVal||dvVal)+'</span></li>';
+}
+function officialSection(titleDv,titleEn,body){
+  if(!body)return '';
+  return '<div class="official-detail-section"><h3><span class="dv-i">'+esc(titleDv)+'</span><span class="en-i">'+esc(titleEn)+'</span></h3>'+body+'</div>';
+}
+function officialListSection(titleDv,titleEn,lines){
+  var count=Math.max(lines.dv.length,lines.en.length);
+  if(!count)return '';
+  var items='';
+  for(var i=0;i<count;i++){
+    items+='<li><span class="dv-i">'+esc(lines.dv[i]||lines.en[i]||'')+'</span><span class="en-i">'+esc(lines.en[i]||lines.dv[i]||'')+'</span></li>';
+  }
+  return officialSection(titleDv,titleEn,'<ul class="official-detail-list">'+items+'</ul>');
+}
+function officialTextSection(titleDv,titleEn,text){
+  if(!text.dv&&!text.en)return '';
+  return officialSection(titleDv,titleEn,'<div class="official-detail-text"><span class="dv-i">'+esc(text.dv||text.en).replace(/\n/g,'<br>')+'</span><span class="en-i">'+esc(text.en||text.dv).replace(/\n/g,'<br>')+'</span></div>');
+}
+window.openOfficialDetail=function(key){
+  var m=(window._officialMeetings||{})[key];if(!m)return;
+  var side=G('official-detail-side'),imgEl=G('official-detail-img'),img=officialImage(m);
+  if(side)side.classList.toggle('has-img',!!img);
+  if(imgEl)imgEl.src=img||'';
+  var orgEl=G('official-detail-org');if(orgEl)orgEl.innerHTML=officialOrgHtml(m);
+  var titleEl=G('official-detail-title');if(titleEl)titleEl.innerHTML=officialTitleHtml(m);
+  var metaEl=G('official-detail-meta');
+  if(metaEl){
+    var meta='';
+    if(m.date)meta+='<span>'+esc(officialDate(m.date))+'</span>';
+    meta+='<span>'+officialTypeSpans(m.type||'other')+'</span>';
+    if(m.location)meta+='<span>'+esc(m.location)+'</span>';
+    metaEl.innerHTML=meta;
+  }
+  var purpose=officialPairText(m,'purposeDv','purposeEn');
+  var orgPair=officialPairText({orgDv:m.orgDv||m.ministryDv||m.organizationDv,orgEn:m.orgEn||m.ministryEn||m.organizationEn},'orgDv','orgEn');
+  var typePair=officialTypePair(m.type||'other');
+  var overview='<ul class="official-detail-list">'
+    +officialInfoLine('މިނިސްޓްރީ / އޯގަނައިޒޭޝަން','Ministry / Organization',orgPair.dv,orgPair.en)
+    +officialInfoLine('ވައްތަރު','Meeting Type',typePair.dv,typePair.en)
+    +officialInfoLine('ތާރީޚް','Date',officialDate(m.date),officialDate(m.date))
+    +officialInfoLine('ތަން','Location',m.location,m.location)
+    +'</ul>';
+  var content=officialSection('ބައްދަލުވުމުގެ ތަފްސީލް','Meeting Details',overview)
+    +officialTextSection('މަޤްޞަދު','Purpose / Appointment',purpose)
+    +officialListSection('މުހިންމު ނުކުތާތައް','Key Points',officialPairLines(m,'keyPointsDv','keyPointsEn'))
+    +officialListSection('ކައުންސިލް ޑެލިގޭޝަން','Council Delegation',officialPairLines(m,'councilPeopleDv','councilPeopleEn'))
+    +officialListSection('އެހެން ބައިވެރިން','Other Participants',officialPairLines(m,'otherPeopleDv','otherPeopleEn'))
+    +officialListSection('ނަތީޖާ / ނިންމުން','Outcomes / Decisions',officialPairLines(m,'outcomesDv','outcomesEn'));
+  if(m.documentUrl){
+    content+=officialSection('ޑޮކިއުމަންޓް','Document','<a class="mtg-doc-link" href="'+attr(m.documentUrl)+'" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span class="dv-i">ޑޮކިއުމަންޓް ބަލާ</span><span class="en-i">View Document</span></a>');
+  }
+  var cont=G('official-detail-content');
+  if(cont)cont.innerHTML=content||'<div class="portal-empty">No details added yet.</div>';
+  var detail=G('official-detail');
+  if(detail)detail.classList.add('open');
+  document.body.style.overflow='hidden';
+};
+window.closeOfficialDetail=function(){
+  var detail=G('official-detail');
+  if(detail)detail.classList.remove('open');
+  var full=G('official-full');
+  if(!full||!full.classList.contains('open'))document.body.style.overflow='';
+};
+onValue(ref(db,'officialMeetings'),s=>{
+  window._officialMeetings=s.val()||{};
+  renderOfficialMeetingsPublic();
+  if(officialStandalone){
+    window.openOfficialMeetings();
+    if(officialInitialMeeting&&window._officialMeetings[officialInitialMeeting]){
+      setTimeout(function(){window.openOfficialDetail(officialInitialMeeting);},80);
+    }
+  }
+});
 
 // SITTINGS
 onValue(ref(db,'sittings'),s=>{
@@ -2193,7 +2754,7 @@ window.closeNM=function(){
   document.body.style.overflow='';
   window._currentArticle=null;
 };
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeNM();closeMtg();closeMtgDetail();closeServiceDirectory();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeNM();closeMtg();closeMtgDetail();closeServiceDirectory();closeAnnouncementDirectory();window.closeOfficialMeetings();window.closeOfficialDetail();}});
 
 window._activeCatFilter=null;
 

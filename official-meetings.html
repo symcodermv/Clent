@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="dv" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Meetings | Feeali Council</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#f5faf9;}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+.frame{position:fixed;inset:0;width:100%;height:100%;border:0;background:#f5faf9;}
+.fallback{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#155C57;font-size:14px;font-weight:800;letter-spacing:0;}
+</style>
+</head>
+<body>
+<div class="fallback">Loading Official Meetings...</div>
+<iframe id="official-frame" class="frame" title="Official Meetings"></iframe>
+<script>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var src='index.html?official=1';
+  var meeting=params.get('meeting');
+  if(meeting)src+='&meeting='+encodeURIComponent(meeting);
+  document.getElementById('official-frame').src=src;
+})();
+</script>
+</body>
+</html>

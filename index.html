@@ -508,15 +508,6 @@ body.en-mode .official-detail-list li{font-family:var(--font-en);}
 body.en-mode .official-detail-text{font-family:var(--font-en);}
 @media(max-width:1024px){.official-grid{grid-template-columns:repeat(2,1fr);}.official-detail-box{grid-template-columns:1fr;overflow-y:auto;}.official-detail-side{min-height:330px;}.official-detail-content{overflow:visible;}}
 @media(max-width:700px){.official-grid{grid-template-columns:1fr;}.official-row{grid-template-columns:64px 1fr;}.official-row-arrow{display:none;}.official-row-img,.official-row-icon{width:64px;height:64px;}.official-full-body{padding:18px 14px;}.official-detail{padding:0;align-items:stretch;}.official-detail-box{border-radius:0;max-height:100vh;}.official-detail-side{min-height:280px;padding:26px 20px;}.official-detail-content{padding:22px 18px;}.official-full-close{top:12px;right:14px;}body:not(.en-mode) .official-full-close{right:auto;left:14px;}}
-body.official-page-mode{overflow:hidden;background:#f5faf9;}
-body.official-page-mode > *:not(#official-full):not(#official-detail):not(script){display:none!important;}
-body.official-page-mode #official-full{position:fixed;inset:0;z-index:1;opacity:1;pointer-events:all;}
-body.official-page-mode #official-detail{z-index:4;}
-body.official-page-mode .official-detail{padding:0;align-items:stretch;}
-body.official-page-mode .official-detail-box{width:100%;height:100vh;max-height:100vh;border-radius:0;box-shadow:none;}
-body.official-page-mode .official-detail-side{min-height:100vh;}
-@media(max-width:700px){body.official-page-mode .official-detail-box{overflow-y:auto;}body.official-page-mode .official-detail-side{min-height:300px;}}
-
 /* ===== FOOTER ===== */
 footer{background:#dde1e4;padding-bottom:52px;position:relative;overflow:hidden;}
 .ft-top{padding:16px 0;}
@@ -717,6 +708,116 @@ body.en-mode .profile-assign-heading{font-family:var(--font-en);font-size:14px;}
 .portal-toast.show{opacity:1;transform:translate(-50%,0);}
 @media(max-width:900px){.portal-cards,.portal-apps-grid{grid-template-columns:1fr 1fr;}.portal-form{grid-template-columns:1fr;}}
 @media(max-width:768px){.portal-btn{padding:8px 10px;font-size:11px;}.portal-btn svg{display:none;}.portal-cards,.portal-apps-grid{grid-template-columns:1fr;}.portal-register,.portal-section{padding:20px 16px;}.portal-top{padding:10px 12px;align-items:flex-start;}.portal-brand{font-size:16px;}.portal-user{align-items:flex-start;flex-direction:column;}.portal-note{align-items:flex-start;flex-direction:column;}}
+
+/* HOME HERO 2026 STYLE */
+.topbar{display:none;}
+.nav{position:absolute;top:0;left:0;right:0;z-index:180;background:transparent;border-bottom:0;box-shadow:none;}
+.nav-inner{max-width:100%;height:auto;min-height:78px;padding:14px 54px;display:flex;align-items:center;gap:12px;direction:rtl;justify-content:flex-start;overflow:hidden;}
+.nav-logo{flex:0 0 auto;margin:0 0 0 26px;text-decoration:none;}
+.nav-logo-text{font-family:var(--font-dv);font-size:24px;font-weight:900;line-height:1;color:#fff;background:none;-webkit-text-fill-color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.5);letter-spacing:0;white-space:nowrap;}
+body.en-mode .nav-logo-text{font-family:var(--font-en);font-size:20px;}
+.nav-link{min-height:42px;display:inline-flex;align-items:center;justify-content:center;padding:8px 11px;border-radius:8px;border:1px solid transparent;background:transparent;color:#fff;font-family:var(--font-dv);font-size:14px;font-weight:900;line-height:1.05;text-shadow:0 2px 14px rgba(0,0,0,.72);letter-spacing:0;white-space:nowrap;}
+body.en-mode .nav-link{font-family:var(--font-en);font-size:12px;}
+.nav-link:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.42);color:#fff;}
+.nav-link:first-of-type{background:#fff;color:#07130f;text-shadow:none;border-color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18);}
+.nav-link:nth-of-type(2){border-color:rgba(255,255,255,.9);}
+.portal-btn{min-height:42px;border:1px solid rgba(255,255,255,.72);background:rgba(255,255,255,.08);color:#fff;border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:none;backdrop-filter:blur(12px);}
+.portal-btn:hover,.lang-toggle:hover{background:rgba(255,255,255,.18);}
+.lang-toggle{min-height:42px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.72);border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:none;backdrop-filter:blur(12px);margin-inline-start:0;}
+.lang-toggle,.lang-toggle:hover,.lang-toggle:focus,.lang-toggle:active{font-family:var(--font-dv);}
+.ham-btn{width:42px;height:42px;color:#fff;border:1px solid rgba(255,255,255,.7);border-radius:8px;background:rgba(255,255,255,.08);align-items:center;justify-content:center;}
+.ham-btn svg{fill:none!important;}
+.ham-btn path{stroke:currentColor!important;}
+body.public-solo .nav{position:sticky;background:#fff;border-bottom:1px solid rgba(0,27,39,.06);}
+body.public-solo .nav-logo-text{background:linear-gradient(90deg,var(--teal),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;}
+body.public-solo .nav-link{color:var(--dark);text-shadow:none;}
+body.public-solo .nav-link:hover{background:var(--card-bg);color:var(--teal);}
+body.public-solo .nav-link:first-of-type{background:var(--dark);color:#fff;border-color:var(--dark);}
+body.public-solo .nav-link:nth-of-type(2){border-color:rgba(0,27,39,.16);}
+body.public-solo .portal-btn,body.public-solo .lang-toggle{background:linear-gradient(135deg,var(--teal),var(--green));border-color:transparent;color:#fff;}
+body.public-solo .ham-btn{color:var(--dark);border-color:rgba(0,27,39,.16);background:#fff;}
+.hero{min-height:100svh;background:#07130f;direction:rtl;}
+.hero-bg,.hero-bg-video{object-position:center center;filter:saturate(.92) contrast(1.04);}
+.hero-overlay{background:radial-gradient(ellipse at 50% 44%,rgba(0,0,0,0) 0%,rgba(0,0,0,.14) 48%,rgba(0,0,0,.48) 100%),linear-gradient(to bottom,rgba(0,0,0,.34) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.82) 100%);}
+.hero-body{padding:128px 72px 86px;align-items:flex-end;justify-content:center;}
+.hero-content{max-width:1420px;display:grid;grid-template-columns:minmax(280px,.92fr) minmax(320px,.78fr);gap:80px;align-items:end;direction:ltr;}
+.hero-title{grid-column:2;grid-row:1;margin:0;justify-self:end;max-width:560px;text-align:right;direction:rtl;}
+#hero-section h1{font-size:112px!important;font-weight:900!important;line-height:.98!important;color:#fff!important;font-family:'RoundFont','MvMAGXB',sans-serif!important;text-shadow:0 2px 3px rgba(0,0,0,.75),0 18px 44px rgba(0,0,0,.55)!important;letter-spacing:0!important;overflow-wrap:anywhere;}
+#hero-section h1 span{font-family:'RoundFont','MvMAGXB',sans-serif!important;}
+body.en-mode #hero-section h1,body.en-mode #hero-section h1 span{font-family:'RoundFont',var(--font-en),sans-serif!important;}
+.hero-desc{grid-column:1;grid-row:1;justify-self:start;align-self:end;max-width:600px;color:#fff;font-size:18px;line-height:1.9;font-family:var(--font-dv);font-weight:900;text-align:right;text-shadow:0 2px 18px rgba(0,0,0,.78);letter-spacing:0;}
+body.en-mode .hero-desc{font-family:var(--font-en);font-size:16px;line-height:1.75;font-weight:800;}
+.hero-scroll,.sb-strip{display:none!important;}
+@media(max-width:1440px){
+  .nav-inner{padding-left:34px;padding-right:34px;gap:8px;}
+  .nav-link{font-size:12px;padding-left:8px;padding-right:8px;}
+  body.en-mode .nav-link{font-size:11px;}
+  .nav-logo-text{font-size:22px;}
+  .hero-body{padding-left:54px;padding-right:54px;}
+  #hero-section h1{font-size:96px!important;}
+}
+@media(max-width:1380px){
+  .nav-inner{min-height:70px;justify-content:space-between;overflow:visible;}
+  .nav-logo{margin:0;}
+  .nav-link{display:none;}
+  .ham-btn{display:flex;}
+  .hero-body{padding:104px 38px 72px;}
+  .hero-content{grid-template-columns:minmax(240px,1fr) minmax(300px,.8fr);gap:44px;}
+  #hero-section h1{font-size:84px!important;}
+}
+@media(max-width:768px){
+  .nav{position:relative;background:#fff;border-bottom:1px solid rgba(0,27,39,.08);}
+  .nav-inner{height:88px;min-height:88px;padding:16px 26px;direction:ltr;display:flex;align-items:center;gap:18px;overflow:visible;box-shadow:0 8px 24px rgba(15,123,125,.08);}
+  .nav-logo{order:4;position:static;margin:0 0 0 auto;min-width:82px;max-width:140px;text-decoration:none;flex:1 1 92px;}
+  .nav-logo-text{font-size:20px;color:var(--teal);-webkit-text-fill-color:var(--teal);text-shadow:none;white-space:normal;text-align:right;line-height:1.05;overflow-wrap:anywhere;}
+  body.en-mode .nav-logo-text{font-size:12px;line-height:1.15;}
+  .portal-btn{order:3;position:static;transform:none;flex:0 0 clamp(142px,28vw,184px);width:auto;min-height:50px;padding:0 13px;font-size:12px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--green));border-color:transparent;color:#fff;box-shadow:0 12px 26px rgba(15,123,125,.16);backdrop-filter:none;justify-content:center;overflow:hidden;}
+  .portal-btn span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .portal-btn svg{display:none;}
+  .lang-toggle{order:2;position:static;flex:0 0 clamp(96px,20vw,136px);width:auto;min-height:50px;padding:0 14px;font-size:17px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--green));border-color:transparent;color:#fff;box-shadow:0 12px 26px rgba(15,123,125,.16);backdrop-filter:none;font-family:var(--font-dv);font-weight:900;}
+  .lang-toggle:hover,.lang-toggle:focus,.lang-toggle:active{background:linear-gradient(135deg,var(--teal),var(--green));color:#fff;border-color:transparent;outline:none;}
+  .lang-toggle::after,body.en-mode .lang-toggle::after{content:none;}
+  .ham-btn{order:1;position:static;flex:0 0 44px;width:44px;height:44px;display:flex;color:var(--dark);border:0;background:transparent;padding:0;margin:0;}
+  .ham-btn svg{width:38px;height:38px;}
+  .hero{min-height:calc(100svh - 88px);}
+  .hero-body{padding:0 22px;align-items:center;justify-content:center;}
+  .hero-content{grid-template-columns:1fr;gap:16px;text-align:center;align-items:center;justify-items:center;width:100%;direction:rtl;}
+  .hero-title,.hero-desc{grid-column:1;grid-row:auto;justify-self:center;max-width:100%;text-align:center!important;direction:rtl;}
+  .hero-title{margin:0;}
+  #hero-section h1{font-size:64px!important;line-height:1!important;text-align:center!important;width:100%;}
+  .hero-desc{font-size:16px!important;line-height:1.8!important;max-width:620px;font-weight:900;}
+}
+@media(max-width:420px){
+  .nav-inner{height:74px;min-height:74px;padding:12px 12px;gap:8px;}
+  .nav-logo{min-width:64px;max-width:88px;flex-basis:70px;}
+  .nav-logo-text{font-size:16px;}
+  body.en-mode .nav-logo-text{font-size:10px;}
+  .portal-btn{flex-basis:126px;min-height:42px;padding:0 8px;font-size:10.5px;border-radius:8px;}
+  .lang-toggle{flex-basis:92px;min-height:42px;padding:0 8px;border-radius:8px;font-size:14px;}
+  .ham-btn{flex-basis:36px;width:36px;height:36px;}
+  .ham-btn svg{width:31px;height:31px;}
+  .hero{min-height:calc(100svh - 74px);}
+  #hero-section h1{font-size:58px!important;}
+  .hero-desc{font-size:14px!important;max-width:330px;}
+}
+@media(max-width:360px){
+  .nav-inner{padding-left:8px;padding-right:8px;gap:6px;}
+  .nav-logo{min-width:54px;max-width:68px;flex-basis:58px;}
+  .nav-logo-text{font-size:13px;}
+  .portal-btn{flex-basis:112px;font-size:9.5px;}
+  .lang-toggle{flex-basis:78px;font-size:12px;}
+  .ham-btn{flex-basis:34px;width:34px;height:34px;}
+}
+@media(min-width:769px) and (max-height:620px){
+  .hero-body{padding-bottom:30px;}
+  #hero-section h1{font-size:72px!important;}
+  .hero-desc{font-size:13px!important;line-height:1.55!important;}
+}
+@media(max-width:768px) and (max-height:620px){
+  .hero-body{padding-bottom:0;}
+  #hero-section h1{font-size:52px!important;}
+  .hero-desc{font-size:13px!important;line-height:1.55!important;}
+}
 
 /* Vote Result Styles */
 .vote-summary{background:#f8fafb;border-radius:12px;padding:14px 16px;margin-bottom:16px;}
@@ -1025,14 +1126,14 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
 
 <!-- NAV -->
 <nav class="nav"><div class="nav-inner">
-  <div class="nav-logo"><div class="nav-logo-text" id="nav-name"><span class="dv-i">ފީއަލި ކައުންސިލް</span><span class="en-i">Feeali Council</span></div></div>
+  <a class="nav-logo" href="#hero-section" onclick="goHomePage(event)"><div class="nav-logo-text" id="nav-name"><span class="dv-i">ފީއަލި ކައުންސިލް</span><span class="en-i">Feeali Council</span></div></a>
   <a class="nav-link" href="#hero-section"><span class="dv-i">މައި ޞަފްޙާ</span><span class="en-i">Home page</span></a>
   <a class="nav-link" href="#services"><span class="dv-i">ޚިދުމަތް</span><span class="en-i">Services</span></a>
   <a class="nav-link" href="#projects"><span class="dv-i">ޕްރޮޖެކްތައް</span><span class="en-i">Projects</span></a>
   <a class="nav-link" href="#announcements"><span class="dv-i">އިޢުލާން</span><span class="en-i">Announcements</span></a>
   <a class="nav-link" href="#news"><span class="dv-i">ޙަބަރު</span><span class="en-i">News</span></a>
   <a class="nav-link" href="#sittings"><span class="dv-i">ކައުންސިލް ޖަލްސާ</span><span class="en-i">Council Sittings</span></a>
-  <a class="nav-link" href="official-meetings.html"><span class="dv-i">ރަސްމީ ބައްދަލުވުން</span><span class="en-i">Official Meetings</span></a>
+  <a class="nav-link" href="#official-meetings"><span class="dv-i">ރަސްމީ ބައްދަލުވުން</span><span class="en-i">Official Meetings</span></a>
   <a class="nav-link" href="#members-section"><span class="dv-i">ކައުންސިލް މެންބަރުން</span><span class="en-i">Council Members</span></a>
   <a class="nav-link" href="#wdc-section"><span class="dv-i">އ.ތ.މ ކޮމެޓީ</span><span class="en-i">WDC Members</span></a>
   <a class="nav-link" href="#staff-section"><span class="dv-i">މުވައްޒަފުން</span><span class="en-i">Staff Profiles</span></a>
@@ -1120,7 +1221,7 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
 
 <!-- HERO -->
 <div class="hero" id="hero-section">
-  <img id="hero-bg-img" class="hero-bg" src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1600&q=80" alt="">
+  <img id="hero-bg-img" class="hero-bg" src="" alt="" style="display:none;">
   <video id="hero-bg-vid" class="hero-bg-video" autoplay muted loop playsinline disablepictureinpicture disableremoteplayback></video>
   <div class="hero-overlay"></div>
   <div class="sb-strip" id="sb-strip"></div>
@@ -1195,7 +1296,7 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
 
 <!-- OFFICIAL MEETINGS -->
 <div id="official-meetings" class="section" style="padding:60px 0 80px;background:#f8fbfa;"><div class="container">
-  <div class="sec-hdr"><h2 class="sec-title"><span class="dv-i">ރަސްމީ ބައްދަލުވުން</span><span class="en-i">Official Meetings</span></h2><a class="more-link" href="official-meetings.html"><span class="dv-i">ހުރިހާ ބައްދަލުވުން</span><span class="en-i">View All</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></a></div>
+  <div class="sec-hdr"><h2 class="sec-title"><span class="dv-i">ރަސްމީ ބައްދަލުވުން</span><span class="en-i">Official Meetings</span></h2><a class="more-link" href="#" onclick="event.preventDefault();openOfficialMeetings()"><span class="dv-i">ހުރިހާ ބައްދަލުވުން</span><span class="en-i">View All</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></a></div>
   <div class="official-grid" id="official-grid"><div class="lc"><div class="spin"></div></div></div>
 </div></div>
 
@@ -1285,16 +1386,14 @@ body.en-mode .art-para:first-child::first-letter{float:left;margin-right:8px;mar
 </footer>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {getDatabase,ref,onValue} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 const FB={apiKey:"AIzaSyAHhY81_fI089J0nSYYdVfuhMbxvgJmGTQ",authDomain:"websitecilent.firebaseapp.com",databaseURL:"https://websitecilent-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"websitecilent",storageBucket:"websitecilent.firebasestorage.app",messagingSenderId:"491322767595",appId:"1:491322767595:web:ce36abdddd9112d02f66ae"};
 const app=initializeApp(FB);const db=getDatabase(app);
+const auth=getAuth(app);
 const DB_REST=FB.databaseURL;
 const dv=()=>!document.body.classList.contains('en-mode');
 const G=id=>document.getElementById(id);
-const officialParams=new URLSearchParams(window.location.search);
-const officialStandalone=officialParams.get('official')==='1';
-const officialInitialMeeting=officialParams.get('meeting')||'';
-if(officialStandalone)document.body.classList.add('official-page-mode');
 
 function empty(){return '<div style="grid-column:1/-1;padding:60px;text-align:center;color:#ccc;font-size:18px;"><span class=\'dv-i\'>ރެކޯޑެއް ނެތް</span><span class=\'en-i\'>No records found</span></div>';}
 function svgIcon(){return '<svg fill="none" stroke="#aaa" stroke-width="1.5" width="36" height="36" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>';}
@@ -1413,14 +1512,19 @@ onValue(ref(db,'site/settings'),s=>{
 });
 
 // HERO
+function isDefaultHeroMedia(src){
+  return String(src||'').indexOf('images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f')!==-1;
+}
 onValue(ref(db,'site/hero'),s=>{
   const h=s.val()||{};
   if(h.titleDv&&G('h-title-dv'))G('h-title-dv').textContent=h.titleDv;
   if(h.titleEn&&G('h-title-en'))G('h-title-en').textContent=h.titleEn;
   if(h.subDv&&G('h-sub-dv'))G('h-sub-dv').textContent=h.subDv;
   if(h.subEn&&G('h-sub-en'))G('h-sub-en').textContent=h.subEn;
-  const ml=h.mediaList||(h.media?[{src:h.media,type:h.mediaType||'image'}]:[]);
+  const storedList=Array.isArray(h.mediaList)?h.mediaList.filter(function(m){return m&&m.src&&!isDefaultHeroMedia(m.src);}):null;
+  const ml=storedList||(h.media&&!isDefaultHeroMedia(h.media)?[{src:h.media,type:h.mediaType||'image'}]:[]);
   if(ml.length>0){setHeroBg(ml[0].src,ml[0].type);buildSbStrip(ml);}
+  else{setHeroBg('', 'image');buildSbStrip([]);}
   buildManagedDrawer(h.sidebarItems);
   // Re-apply custom font after hero text is set (font settings may have loaded first)
   applyTitleFont();
@@ -1447,6 +1551,18 @@ function portalNorm(v){
 function portalAccountKey(account){
   var raw=[portalNorm(account&&account.idNo),portalNorm(account&&account.mobile)].filter(Boolean).join('_')||String(Date.now());
   return encodeURIComponent(raw).replace(/[.#$/\[\]]/g,'_');
+}
+async function portalFirebaseToken(email,pass){
+  try{
+    var created=await createUserWithEmailAndPassword(auth,email,pass);
+    return created.user.getIdToken(true);
+  }catch(e){
+    if(e&&e.code==='auth/email-already-in-use'){
+      var signed=await signInWithEmailAndPassword(auth,email,pass);
+      return signed.user.getIdToken(true);
+    }
+    throw e;
+  }
 }
 async function portalPasswordHash(pass){
   if(window.crypto&&window.crypto.subtle&&typeof TextEncoder!=='undefined'){
@@ -1479,13 +1595,23 @@ function portalPublicAccount(account){
   delete clean.password;
   return clean;
 }
-async function savePortalAccountFirebase(account){
+async function savePortalAccountFirebase(account,pass){
   var key=portalAccountKey(account);
+  var payload=portalPublicAccount(Object.assign({},account,{firebaseKey:key,updatedAt:Date.now()}));
   var r=await fetch(DB_REST+'/portalUsers/'+key+'.json',{
     method:'PUT',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(portalPublicAccount(Object.assign({},account,{firebaseKey:key,updatedAt:Date.now()})))
+    body:JSON.stringify(payload)
   });
+  if(!r.ok&&account.email&&pass){
+    var token=await portalFirebaseToken(account.email,pass);
+    r=await fetch(DB_REST+'/portalUsers/'+key+'.json?auth='+encodeURIComponent(token),{
+      method:'PUT',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    signOut(auth).catch(function(){});
+  }
   if(!r.ok)throw new Error('Firebase account save failed: '+r.status);
   return r.json();
 }
@@ -1723,17 +1849,19 @@ window.registerPortalUser=async function(){
   if(pass.length<6)return fail('Password must be at least 6 characters.');
   if(pass!==pass2)return fail('Passwords do not match.');
   var account=Object.assign({},data,{passwordHash:await portalPasswordHash(pass)});
+  var firebaseSaved=true;
   try{
-    await savePortalAccountFirebase(account);
+    await savePortalAccountFirebase(account,pass);
   }catch(e){
-    return fail(e.message);
+    firebaseSaved=false;
+    console.warn('Portal Firebase account save failed:',e);
   }
   upsertPortalLocalAccount(account);
   localStorage.setItem('feealiPortalUser',JSON.stringify(data));
   ['hp-name','hp-email','hp-idno','hp-mobile','hp-pass','hp-pass2'].forEach(function(id){var el=G(id);if(el)el.value='';});
   resetPortalSections();
   renderPortalState();
-  portalToast('Account created.');
+  portalToast(firebaseSaved?'Account created and saved.':'Account created. Firebase sync is blocked by rules.');
 };
 function defaultSidebarItems(){
   return [
@@ -1743,7 +1871,7 @@ function defaultSidebarItems(){
     {labelEn:'Announcements',labelDv:'އިޢުލާން',href:'#announcements'},
     {labelEn:'News',labelDv:'ޚަބަރު',href:'#news'},
     {labelEn:'Council Sittings',labelDv:'ކައުންސިލް ބައްދަލުވުންތައް',href:'#sittings'},
-    {labelEn:'Official Meetings',labelDv:'ރަސްމީ ބައްދަލުވުން',href:'official-meetings.html'},
+    {labelEn:'Official Meetings',labelDv:'ރަސްމީ ބައްދަލުވުން',href:'#official-meetings'},
     {labelEn:'Council Members',labelDv:'ކައުންސިލް މެންބަރުން',href:'#members-section'},
     {labelEn:'WDC Members',labelDv:'އ.ތ.މ ކޮމެޓީ',href:'#wdc-section'},
     {labelEn:'Staff Profiles',labelDv:'މުވައްޒަފުން',href:'#staff-section'},
@@ -1753,7 +1881,7 @@ function defaultSidebarItems(){
 function sidebarRowsWithDefaults(items){
   const normalize=function(it){
     const row=Object.assign({},it||{});
-    if(row.href==='#official-meetings')row.href='official-meetings.html';
+    if(row.href==='official-meetings.html')row.href='#official-meetings';
     if(Array.isArray(row.children))row.children=row.children.map(normalize);
     return row;
   };
@@ -1800,6 +1928,10 @@ function setPublicSolo(hash){
 }
 function navigatePublicHash(hash,delay){
   if(!hash)return;
+  if(hash==='#official-meetings'){
+    window.openOfficialMeetings();
+    return;
+  }
   if(setPublicSolo(hash))return;
   closeServiceDirectory();
   closeAnnouncementDirectory();
@@ -1810,6 +1942,12 @@ function navigatePublicHash(hash,delay){
     if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
   },delay||0);
 }
+window.goHomePage=function(ev){
+  if(ev)ev.preventDefault();
+  if(window.closeMobDrawer)window.closeMobDrawer();
+  if(window.location.hash!=='#hero-section')window.history.pushState(null,'','#hero-section');
+  navigatePublicHash('#hero-section',0);
+};
 function handleDrawerHref(href){
   if(!href){closeMobDrawer();return;}
   if(href.charAt(0)==='#'){closeMobDrawer();navigatePublicHash(href,260);return;}
@@ -1837,8 +1975,20 @@ document.querySelectorAll('.nav-link[href^="#"]').forEach(function(a){
   });
 });
 function setHeroBg(src,type){
-  if(type==='video'){G('hero-bg-img').style.display='none';const v=G('hero-bg-vid');v.src=src;v.style.display='block';}
-  else{G('hero-bg-vid').style.display='none';G('hero-bg-img').src=src;G('hero-bg-img').style.display='block';}
+  const img=G('hero-bg-img');
+  const v=G('hero-bg-vid');
+  if(!src){
+    if(img){img.removeAttribute('src');img.style.display='none';}
+    if(v){v.pause();v.removeAttribute('src');v.load();v.style.display='none';}
+    return;
+  }
+  if(type==='video'){
+    if(img)img.style.display='none';
+    if(v){v.src=src;v.style.display='block';v.load();v.play&&v.play().catch(function(){});}
+  }else{
+    if(v){v.pause();v.removeAttribute('src');v.load();v.style.display='none';}
+    if(img){img.src=src;img.style.display='block';}
+  }
 }
 function buildSbStrip(ml){
   const sb=G('sb-strip');if(!sb)return;
@@ -2314,7 +2464,7 @@ function officialImage(m){
 function renderOfficialCard(entry){
   var k=entry[0],m=entry[1],img=officialImage(m);
   var media=img?'<img src="'+attr(img)+'" alt="" loading="lazy">':'<div class="official-card-icon">'+officialIcon()+'</div>';
-  return '<div class="official-card" data-key="'+attr(k)+'" onclick="window.location.href=\'official-meetings.html?meeting=\'+encodeURIComponent(this.dataset.key)">'
+  return '<div class="official-card" data-key="'+attr(k)+'" onclick="openOfficialCardDetail(this.dataset.key)">'
     +'<div class="official-card-media">'+media+'</div>'
     +'<div class="official-card-body">'
       +'<div class="official-card-meta"><span class="official-pill">'+esc(officialDate(m.date)||'')+'</span><span class="official-pill">'+officialTypeSpans(m.type||'other')+'</span></div>'
@@ -2353,12 +2503,11 @@ window.openOfficialMeetings=function(){
   if(el)el.classList.add('open');
   document.body.style.overflow='hidden';
 };
+window.openOfficialCardDetail=function(key){
+  window.openOfficialMeetings();
+  setTimeout(function(){window.openOfficialDetail(key);},30);
+};
 window.closeOfficialMeetings=function(){
-  if(officialStandalone){
-    try{window.top.location.href='index.html';}
-    catch(e){window.location.href='index.html';}
-    return;
-  }
   var el=G('official-full');
   if(el)el.classList.remove('open');
   var detail=G('official-detail');
@@ -2433,12 +2582,6 @@ window.closeOfficialDetail=function(){
 onValue(ref(db,'officialMeetings'),s=>{
   window._officialMeetings=s.val()||{};
   renderOfficialMeetingsPublic();
-  if(officialStandalone){
-    window.openOfficialMeetings();
-    if(officialInitialMeeting&&window._officialMeetings[officialInitialMeeting]){
-      setTimeout(function(){window.openOfficialDetail(officialInitialMeeting);},80);
-    }
-  }
 });
 
 // SITTINGS
